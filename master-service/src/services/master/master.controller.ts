@@ -1,11 +1,11 @@
-import {  Controller, Get, UseFilters } from "@nestjs/common";
+import { Controller, Get, HttpException, HttpStatus, NotFoundException, UseFilters } from "@nestjs/common";
 import { MessagePattern, RpcException } from "@nestjs/microservices";
 import { defer } from "rxjs";
 import FetchMasterAdapter from "src/application/master/adapters/fetch-master.adapter";
 import { MasterCommandPatterns } from "src/infrastructure/constants/master/master-command-pattern";
-import { ExceptionFilter } from "src/infrastructure/Exception-filter/exception-filter";
+import { HttpExceptionFilter } from "src/infrastructure/Exception-filter/http.exception.filter";
 
-
+@UseFilters(new HttpExceptionFilter())
 @Controller()
 export class MasterController {
     constructor(
@@ -14,11 +14,23 @@ export class MasterController {
         console.log('master service controller created')
     }
 
-    @UseFilters(new ExceptionFilter())
+
     @Get('/all')
     fetchMasterData() {
         console.log('Master service controller fetchMasterData method')
-        throw new RpcException('tEST EXCEPTION FILTER fetchMasterData.');
+        throw new RpcException({
+            status: HttpStatus.NOT_FOUND,
+            errorMsg: '.rpc..Access to this site is forbidden',
+        });
+        throw new NotFoundException({
+            status: HttpStatus.NOT_FOUND,
+            errorMsg: '...Access to this site is forbidden',
+        });
+
+        throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            errorMsg: 'Access to this site is forbidden'
+        }, 403);
         return this.fetchMasterAdapter.handle()
 
     }

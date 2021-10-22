@@ -7,7 +7,6 @@ import { Masters } from 'src/core-domain/adapters/master/entities/master.entity'
 import { MasterRepository } from 'src/core-domain/adapters/master/repositories/master.repository';
 import { MasterSettingConstants } from 'src/infrastructure/constants/master/master-settings';
 import { MasterDatabaseModule } from 'src/infrastructure/database/master/master-database.module';
-import { ExceptionFilter } from 'src/infrastructure/Exception-filter/exception-filter';
 import { MasterController } from './master.controller';
 
 @Module({
@@ -31,7 +30,6 @@ import { MasterController } from './master.controller';
     controllers: [MasterController],
     providers: [
         FetchMasterAdapter,
-        ExceptionFilter,
         {
             provide: MasterSettingConstants.MASTER_SERVICE,
             useClass: MasterRepository

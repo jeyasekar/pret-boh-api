@@ -1,12 +1,14 @@
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices'
 import { ConfigService } from './infrastructure/configuration/config.service';
 import { MasterSettingConstants } from './infrastructure/constants/master/master-settings';
+import { AllExceptionsFilter } from './infrastructure/Exception-filter/all.exceptions.filter';
 import { MasterModule } from './services/master/master.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(MasterModule)
     
+  app.useGlobalFilters(new AllExceptionsFilter());
   
   app.connectMicroservice({
     name: MasterSettingConstants.MASTER_MQ_CLIENT_PROXY,
