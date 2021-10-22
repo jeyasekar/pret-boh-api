@@ -54,7 +54,7 @@ export class ConfigService {
             entities: [this.getValue(OrderSettingConstants.ORDER_ENTITIES_PATH)],
             migrationsTableName: this.getValue(OrderSettingConstants.ORDER_MIGRATION_TABLE_NAME),
             migrations: [this.getValue(OrderSettingConstants.ORDER_MIGRATIONS_FILE_PATH)],
-            synchronize: true,
+            //synchronize: true,
             cli: {
                 migrationsDir: this.getValue(OrderSettingConstants.ORDER_MIGRATIONS_DIRECTORY)
             }

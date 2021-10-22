@@ -54,7 +54,7 @@ export class ConfigService {
             entities: [this.getValue(MasterSettingConstants.MASTER_ENTITIES_PATH)],
             migrationsTableName: this.getValue(MasterSettingConstants.MASTER_MIGRATION_TABLE_NAME),
             migrations: [this.getValue(MasterSettingConstants.MASTER_MIGRATIONS_FILE_PATH)],
-            synchronize: true,
+            //synchronize: true,
             cli: {
                 migrationsDir: this.getValue(MasterSettingConstants.MASTER_MIGRATIONS_DIRECTORY)
             }
