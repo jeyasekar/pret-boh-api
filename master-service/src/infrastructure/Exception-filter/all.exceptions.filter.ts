@@ -18,7 +18,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     let err: ExceptionMsg
     if (exception instanceof RpcException) {
       err = JSON.parse(JSON.stringify(exception.getError()));
-      console.log('status', err)
+     console.log('status from catch block', err)
     }
 
     const status =

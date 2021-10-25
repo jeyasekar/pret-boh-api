@@ -63,11 +63,17 @@ export class ConfigService {
         return options
     }
     public getPort() {
+        this.getLogLevel()
         return this.getValue('MASTER_SERVICE_PORT', true)
     }
     public isProduction() {
         const mode = this.getValue('MODE', false)
         return mode != 'DEV'
+    }
+
+    public getLogLevel():string {
+        const level = this.getValue('MASTER_LOG_LEVEL', false)
+        return level
     }
     public ensureValues(keys: string[]) {
         keys.forEach(k => this.getValue(k, true))
