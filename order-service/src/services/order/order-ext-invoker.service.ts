@@ -16,8 +16,9 @@ export class OrderExtInvokerService {
     }
     fetchOrders() {
         console.log('inside service')
+       
         return this.productsClient.send<OrderModel[]>(
-            { cmd: OrderCommandPatterns.FETCH_ORDER }, {})
+            { cmd: OrderCommandPatterns.FETCH_ORDER_FROM_MASTER }, {})
     }
 
     fetchRedisData() {

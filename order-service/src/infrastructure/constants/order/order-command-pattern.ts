@@ -4,5 +4,5 @@ export class OrderCommandPatterns {
     static DELETE_ORDER = 'DELETE_ORDER';
     static FETCH_ORDER_BY_NAME = 'FETCH_ORDER_BY_NAME';
     static FETCH_ORDER_BY_ID = 'FETCH_ORDER_BY_ID';
-    static FETCH_ORDER = 'FETCH_ORDER';
+    static FETCH_ORDER_FROM_MASTER = 'FETCH_MASTER';
 }

@@ -15,7 +15,7 @@ async function bootstrap() {
     transport: Transport.RMQ,
     options: {
       urls: ['amqps://mgctrdee:bGBkCrxIP4MZbUQuC5-SAACtjLt0WqvM@mustang.rmq.cloudamqp.com/mgctrdee'],
-      queue: 'products_service_queue',
+      queue: 'order_service_queue',
       queueOptions: {
         durable: false
       }
